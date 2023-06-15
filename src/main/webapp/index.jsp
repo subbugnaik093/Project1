@@ -1,13 +1,5 @@
 
-<?php 
-$connect = mysqli_connect('localhost','root','','clickmasterdb');
-if(mysqli_connect_error())
-{
-	echo "not connected";
-}
-//echo "connected";
 
-?>
 
 
 
@@ -420,55 +412,6 @@ color: var(--black);
 </section>
 
 
-
-<?php         
-        if(isset($_POST['submit_btn']))
-        {       
-            $name = $_POST['name'];
-			$email= $_POST['email'];
-			$number = $_POST['number'];
-
-			$sql1 = "SELECT * FROM  register  WHERE name = '$name' AND email='$email'";
-
-			$result = mysqli_query($connect, $sql1);
-
-			if (mysqli_num_rows($result))  { 	
-				
-
-				$row = mysqli_fetch_assoc($result);
-
-					if ($row['name'] === $name && $row['email'] === $email) {
-                        if(isset($_POST['submit_btn']))
-                        {       
-                            $name = $_POST['name'];
-                            $email= $_POST['email'];
-                            $number = $_POST['number'];
-                                
-                $sql = "INSERT INTO contact(name,email,number) VALUES ('$name','$email','$number')";
-                
-                            if(mysqli_query($connect,$sql))
-                            {
-                             // echo "<p align='center' > <font color='green'> Record Saved Sucesfully </font> </p>"; 
-                                echo '<script> alert("Thanks for your Touch") </script>';
-                                echo "<script type='text/javascript'> document.location ='Build6.php'; </script>";
-                
-                            }
-                else
-                            {
-                              //echo "<p align='center' > <font color='Red'> Record Saved Failed</font> </p>";
-                                echo '<script> alert("register failed ") </script>';
-                            }
-                        }
-						//echo "Logged in!";
-						echo '<script> alert("Thank You") </script>';
-						echo "<script type='text/javascript'> document.location ='build6.php'; </script>";
-					}
-			}
-			else{
-				echo '<script> alert(" Failed in Touch") </script>';
-			}
-        }
-	?> 
 
 
     <script src="js/script6.js"></script>
